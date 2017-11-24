@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/header_layout"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/two"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/birth" />
+
+        <include layout="@layout/date_item"/>
+
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/shimmer_tv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="打击对方是否"
+            android:textColor="#f00"
+            android:textSize="20sp" />
+
+
+        <include layout="@layout/date_item"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_logout_selector"
+            android:text="进入"
+            android:textColor="@color/base_color_text_white"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.trip.happy.view.FishDrawableView
+        android:id="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sea"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/mark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:text="距离还有:"
+            android:textColor="#000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mark"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textColor="#f00"
+            android:textSize="30sp" />
+    </com.trip.happy.view.FishDrawableView>
+
+
+</RelativeLayout>

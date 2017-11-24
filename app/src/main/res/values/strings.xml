@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="login">登录</string>
+    <string name="login_username_hint">请输入用户名</string>
+    <string name="login_password_hint">请输入密码</string>
+
+    <string name="account_null">帐号不能为空，请重新输入</string>
+    <string name="password_null">密码不能为空，请重新输入</string>
+</resources>
