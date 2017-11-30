@@ -5,12 +5,17 @@
     android:layout_height="match_parent"
     android:background="#F0F0F0">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swl_wei_xin_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 
     <com.trip.happy.view.fab.FloatingActionsMenu
@@ -27,8 +32,7 @@
             android:layout_height="wrap_content"
             fab:fab_colorNormal="#3FC2E3"
             fab:fab_colorPressed="#3FC2E3"
-            fab:fab_icon="@drawable/floataction_list"
-           />
+            fab:fab_icon="@drawable/floataction_list" />
 
 
         <com.trip.happy.view.fab.FloatingActionButton
@@ -37,8 +41,7 @@
             android:layout_height="wrap_content"
             fab:fab_colorNormal="#3FC2E3"
             fab:fab_colorPressed="#3FC2E3"
-            fab:fab_icon="@drawable/floataction_grid"
-          />
+            fab:fab_icon="@drawable/floataction_grid" />
 
 
     </com.trip.happy.view.fab.FloatingActionsMenu>

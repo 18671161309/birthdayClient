@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.trip.core.app.Happy;
+import com.trip.happy.view.LocationManager;
 
 import cn.bmob.v3.Bmob;
 
@@ -18,6 +19,7 @@ public class HappyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        LocationManager.init(this);
         Fresco.initialize(this);
         Bmob.initialize(this, "4c3206c9aa101d865aee99f66ae0776b");
         Happy.init(this)

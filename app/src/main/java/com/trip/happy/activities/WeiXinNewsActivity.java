@@ -13,6 +13,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.trip.core.utils.CommonUtils;
 import com.trip.happy.R;
@@ -40,6 +41,8 @@ public class WeiXinNewsActivity extends BaseActivity {
     FloatingActionButton fabWeiXinNewsBrowser;
     @BindView(R.id.fab_wei_xin_news_share)
     FloatingActionButton fabWeiXinNewsShare;
+    @BindView(R.id.go_out)
+    TextView goOut;
     private String url;
 
 
@@ -50,6 +53,7 @@ public class WeiXinNewsActivity extends BaseActivity {
 
     @Override
     public void initData() {
+        goOut.setVisibility(View.GONE);
         ivHeaderLayoutBack.setVisibility(View.VISIBLE);
         WebSettings webSettings = wvWeiXinNewsDisplay.getSettings();
         if (CommonUtils.isNetWorkAvailable()) {
@@ -139,7 +143,6 @@ public class WeiXinNewsActivity extends BaseActivity {
     }
 
 
-
     @OnClick({R.id.fab_wei_xin_news_browser, R.id.fab_wei_xin_news_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -150,4 +153,6 @@ public class WeiXinNewsActivity extends BaseActivity {
                 break;
         }
     }
+
+
 }

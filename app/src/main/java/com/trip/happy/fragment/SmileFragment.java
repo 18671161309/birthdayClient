@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.trip.core.app.ConfigKeys;
 import com.trip.core.app.Happy;
@@ -56,6 +57,13 @@ public class SmileFragment extends LazyFragment {
     private LoadMoreWrapper<WeiXinBean> wrapper;
 
     private int page = 1;
+
+
+
+    public static SmileFragment getInstance() {
+        SmileFragment fragment = new SmileFragment();
+        return fragment;
+    }
 
 
     public Object setLayout() {
@@ -108,7 +116,7 @@ public class SmileFragment extends LazyFragment {
         wrapper.setOnLoadMoreListener(new LoadMoreWrapper.OnLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                requestDatas(page++);
+                requestDatas(++page);
             }
         });
         rcvWeiXinDisplay.setAdapter(wrapper);

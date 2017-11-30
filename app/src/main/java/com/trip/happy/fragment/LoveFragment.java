@@ -1,17 +1,14 @@
 package com.trip.happy.fragment;
 
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.ProgressDialog;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
@@ -20,8 +17,7 @@ import com.trip.core.recyclerView.MultiItemTypeAdapter;
 import com.trip.core.recyclerView.base.ViewHolder;
 import com.trip.core.utils.ToastUtils;
 import com.trip.happy.R;
-import com.trip.happy.activities.PrePicActivity;
-import com.trip.happy.bean.PersonCard;
+import com.trip.happy.bean.Picture;
 import com.trip.happy.fragment.base.LazyFragment;
 import com.trip.happy.view.fab.FloatingActionButton;
 
@@ -30,6 +26,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 
 /**
@@ -46,9 +45,16 @@ public class LoveFragment extends LazyFragment {
     FloatingActionButton floatactionGrid;
     @BindView(R.id.floataction_list)
     FloatingActionButton floatactionList;
-    private CommonAdapter<PersonCard> personCardCommonAdapter;
+    @BindView(R.id.swl_wei_xin_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
+    private CommonAdapter<Picture> personCardCommonAdapter;
     protected boolean isInit = false;
-    private List<PersonCard> list;
+    private List<Picture> lists = new ArrayList<>();
+
+    public static LoveFragment getInstance() {
+        LoveFragment fragment = new LoveFragment();
+        return fragment;
+    }
 
     public Object setLayout() {
         return R.layout.fragment_love;
@@ -64,17 +70,19 @@ public class LoveFragment extends LazyFragment {
 
     @Override
     public void initView(View rootView) {
+
+
         setLayout(null);
         initListener();
 
     }
 
     private void initListener() {
-        personCardCommonAdapter = new CommonAdapter<PersonCard>(getActivity(), R.layout.recyclerview_item, buildData()) {
+        personCardCommonAdapter = new CommonAdapter<Picture>(getActivity(), R.layout.recyclerview_item, lists) {
             @Override
-            protected void convert(ViewHolder holder, PersonCard personCard, int position) {
-                holder.setImageUrl(R.id.user_avatar, personCard.avatarUrl);
-                holder.setText(R.id.user_name, personCard.name);
+            protected void convert(ViewHolder holder, Picture personCard, int position) {
+                holder.setImageUrl(R.id.user_avatar, personCard.getPic_url().getUrl());
+                holder.setText(R.id.user_name, personCard.getPic_desc());
             }
         };
         recyclerview.setAdapter(personCardCommonAdapter);
@@ -88,7 +96,7 @@ public class LoveFragment extends LazyFragment {
                 viewById.enable();
                 viewById.setAnimaDuring(800);
                 Glide.with(getContext())
-                        .load(list.get(position).avatarUrl).into(viewById);
+                        .load(lists.get(position).getPic_url().getUrl()).into(viewById);
                 alertDialog.show();
             }
 
@@ -97,35 +105,41 @@ public class LoveFragment extends LazyFragment {
                 return false;
             }
         });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                buildData();
+            }
+        });
     }
 
 
     @Override
     public void LazyLoad() {
         if (isInit && isVisible) {
-
+            buildData();
         }
     }
 
-    //生成6个明星数据，这些Url地址都来源于网络
-    private List<PersonCard> buildData() {
+    private List<Picture> buildData() {
+        mDialog.show();
+        BmobQuery<Picture> bmobQuery = new BmobQuery<>();
+        bmobQuery.findObjects(new FindListener<Picture>() {
+            @Override
+            public void done(List<Picture> list, BmobException e) {
+                mDialog.dismiss();
+                if (swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+                if (e == null) {
+                    lists = list;
+                    personCardCommonAdapter.updatas(list);
+                }
+            }
+        });
 
-        String[] names = {"邓紫棋", "范冰冰", "杨幂"};
-        String[] imgUrs = {
-                "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1477122795&di=f740bd484870f9bcb0cafe454a6465a2&src=http://tpic.home.news.cn/xhCloudNewsPic/xhpic1501/M08/28/06/wKhTlVfs1h2EBoQfAAAAAF479OI749.jpg",
-                "https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=fd90a83e900a304e4d22a7fae1c9a7c3/d01373f082025aafa480a2f1fcedab64034f1a5d.jpg",
-                "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D200/sign=005560fc8b5494ee982208191df4e0e1/c2fdfc039245d68827b453e7a3c27d1ed21b243b.jpg",
-        };
-
-        list = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            PersonCard p = new PersonCard();
-            p.avatarUrl = imgUrs[i];
-            p.name = names[i];
-            list.add(p);
-        }
-
-        return list;
+        return lists;
     }
 
 
@@ -136,6 +150,11 @@ public class LoveFragment extends LazyFragment {
         LazyLoad();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        isInit = false;
+    }
 
     @OnClick({R.id.floataction_list, R.id.floataction_grid})
     public void onViewClicked(View view) {

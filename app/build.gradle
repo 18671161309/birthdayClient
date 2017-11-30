@@ -6,11 +6,15 @@ android {
     defaultConfig {
         applicationId "com.trip.happy"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
 
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
     }
     buildTypes {
         release {
@@ -30,10 +34,13 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'devlight.io:navigationtabbar:1.2.5'
-
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
     compile 'com.android.support:cardview-v7:26.1.0'
-
     compile 'com.bm.photoview:library:1.4.1'
-
+    compile 'tyrant:heartlayout:1.0.1'
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.github.vipulasri:timelineview:1.0.5'
+    implementation files('libs/AMap_Location_V3.6.1_20171012.jar')
+    implementation files('libs/Android_Map3D_SDK_V5.5.0_20171107.jar')
+    implementation files('libs/AMap_Search_V5.5.0_20171107.jar')
 }

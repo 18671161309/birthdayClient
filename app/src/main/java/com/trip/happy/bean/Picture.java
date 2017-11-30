@@ -1,49 +1,36 @@
 package com.trip.happy.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by xiajun on 2017/11/24.
  */
 
-public class PersonCard implements Parcelable {
+public class Picture  extends BmobObject {
 
-    public String avatarUrl; //明显头像的Url
-    public String name;  //明显的名字
-    public int imgHeight;  //头像图片的高度
+    public BmobFile pic_url;
+    public String pic_desc;
 
-    public PersonCard(){}
-
-    protected PersonCard(Parcel in) {
-        avatarUrl = in.readString();
-        name = in.readString();
-        imgHeight = in.readInt();
+    public Picture(BmobFile pic_url, String pic_desc) {
+        this.pic_url = pic_url;
+        this.pic_desc = pic_desc;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(avatarUrl);
-        dest.writeString(name);
-        dest.writeInt(imgHeight);
+
+    public BmobFile getPic_url() {
+        return pic_url;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setPic_url(BmobFile pic_url) {
+        this.pic_url = pic_url;
     }
 
-    public static final Creator<PersonCard> CREATOR = new Creator<PersonCard>() {
-        @Override
-        public PersonCard createFromParcel(Parcel in) {
-            return new PersonCard(in);
-        }
+    public String getPic_desc() {
+        return pic_desc;
+    }
 
-        @Override
-        public PersonCard[] newArray(int size) {
-            return new PersonCard[size];
-        }
-    };
+    public void setPic_desc(String pic_desc) {
+        this.pic_desc = pic_desc;
+    }
 }

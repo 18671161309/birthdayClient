@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我是生日界面"/>
-</LinearLayout>
+        android:layout_height="match_parent"/>
+
+
+    <tyrantgit.widget.HeartLayout
+        android:id="@+id/heart_layout"
+        android:layout_width="100dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+
+
+</RelativeLayout>

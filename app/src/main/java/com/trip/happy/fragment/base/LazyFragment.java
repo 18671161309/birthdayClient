@@ -2,6 +2,7 @@ package com.trip.happy.fragment.base;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ public abstract class LazyFragment extends Fragment {
 
     protected boolean isVisible = false;
     private Unbinder unbinder = null;
+    public ProgressDialog mDialog;
+
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -53,6 +56,9 @@ public abstract class LazyFragment extends Fragment {
         }
 
         unbinder = ButterKnife.bind(this, rootView);
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setMessage("请稍候....");
+        mDialog.setCancelable(false);
         initView(rootView);
         return rootView;
     }
@@ -74,13 +80,11 @@ public abstract class LazyFragment extends Fragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity()).create();
         View layout = LayoutInflater.from(getActivity()).inflate(layoutId, null);
-        dialog.setView(layout);
+        dialog.setView(layout, 0, 0, 0, 0);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
         Window window = dialog.getWindow();
         window.setContentView(layoutId);
-
-
         return dialog;
     }
 

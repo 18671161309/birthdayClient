@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">敏之恋</string>
     <string name="login">登录</string>
     <string name="login_username_hint">请输入用户名</string>
     <string name="login_password_hint">请输入密码</string>

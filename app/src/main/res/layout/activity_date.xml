@@ -12,12 +12,9 @@
         android:id="@+id/two"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/birth" />
+        android:orientation="vertical"
+        android:visibility="gone"
+       >
 
         <include layout="@layout/date_item"/>
 
@@ -28,7 +25,6 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:text="打击对方是否"
             android:textColor="#f00"
             android:textSize="20sp" />
 
@@ -55,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/sea"
-        android:visibility="gone">
+  >
 
         <TextView
             android:id="@+id/mark"

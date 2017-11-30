@@ -60,7 +60,7 @@ public class DateActivity extends BaseActivity {
     }
 
     private void initView() {
-        endTime = Long.valueOf((TimeUtil.getTimestamp("2017-11-23 16:26:00", "yyyy-MM-dd HH:mm:ss")));
+        endTime = Long.valueOf((TimeUtil.getTimestamp("2017-12-5 00:00:00", "yyyy-MM-dd HH:mm:ss")));
         currentTime = new Date().getTime();
         differenceTime = endTime - currentTime;
         new CountDownTimer(differenceTime, 1000) {
