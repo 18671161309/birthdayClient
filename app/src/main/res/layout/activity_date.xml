@@ -1,57 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/holo_blue_light">
 
     <include
         layout="@layout/header_layout"
         android:visibility="gone" />
 
-    <LinearLayout
-        android:id="@+id/two"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
-       >
-
-        <include layout="@layout/date_item"/>
-
-        <com.romainpiel.shimmer.ShimmerTextView
-            android:id="@+id/shimmer_tv"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:textColor="#f00"
-            android:textSize="20sp" />
-
-
-        <include layout="@layout/date_item"/>
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_logout_selector"
-            android:text="进入"
-            android:textColor="@color/base_color_text_white"
-            android:textSize="20sp" />
-    </LinearLayout>
 
     <com.trip.happy.view.FishDrawableView
         android:id="@+id/one"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/sea"
-  >
+        android:layout_height="match_parent">
+
 
         <TextView
             android:id="@+id/mark"
@@ -59,8 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:text="距离还有:"
-            android:textColor="#000"
+            android:text="距离小敏生日还有:"
+            android:textColor="#fff"
             android:textSize="18sp" />
 
         <TextView
@@ -72,7 +35,26 @@
             android:layout_marginTop="10dp"
             android:textColor="#f00"
             android:textSize="30sp" />
+
+
     </com.trip.happy.view.FishDrawableView>
 
+
+    <com.opensource.svgaplayer.SVGAImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitCenter"
+        app:antiAlias="true" />
+
+    <TextView
+        android:id="@+id/floataction_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/xiaoxi" />
 
 </RelativeLayout>

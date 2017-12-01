@@ -68,7 +68,11 @@ public class LoginActivity extends BaseActivity {
             return;
         }
 
-
+        if (!aetLoginName.getText().toString().equals("xiaomin")||!aetLoginPassword.getText().toString().equals("xiajun520xiaomin"))
+        {
+            ToastUtils.showShortToast(getString(R.string.password_error));
+            return;
+        }
         //TODO 请求服务器数据
         startActivityFinish(MainActivity.class);
 

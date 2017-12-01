@@ -40,7 +40,8 @@ dependencies {
     compile 'tyrant:heartlayout:1.0.1'
     compile 'com.youth.banner:banner:1.4.10'
     compile 'com.github.vipulasri:timelineview:1.0.5'
-    implementation files('libs/AMap_Location_V3.6.1_20171012.jar')
-    implementation files('libs/Android_Map3D_SDK_V5.5.0_20171107.jar')
-    implementation files('libs/AMap_Search_V5.5.0_20171107.jar')
+    compile 'com.github.yyued:SVGAPlayer-Android:2.0.0'
+}
+repositories {
+    mavenCentral()
 }

@@ -13,14 +13,14 @@
         android:layout_marginLeft="-50dp"
         android:layout_marginRight="-300dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/lg_bg"/>
+        android:src="@drawable/de_bg"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="150dp"
-        android:text="提示"
+        android:text="敏之恋"
         android:textColor="@color/base_color_text_blue"
         android:textSize="45sp"/>
 
@@ -41,8 +41,8 @@
             android:gravity="bottom"
             android:hint="@string/login_username_hint"
             android:maxLines="1"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
             android:textSize="15sp"
             />
         <com.trip.core.view.AutoEditText
@@ -57,8 +57,8 @@
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
             android:textSize="15sp"
             />
         <Button

@@ -43,19 +43,22 @@
             android:name=".activities.SplashActivity"
             android:theme="@style/welcomeTheme"></activity>
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".activities.WeiXinNewsActivity"/>
+        <activity android:name=".activities.DateActivity"
+            android:theme="@style/LoginTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.WeiXinNewsActivity"/>
-        <activity android:name=".activities.DateActivity">
-
-        </activity>
 
         <activity android:name=".TestActivity"/>
         <activity android:name=".activities.PrePicActivity"/>
         <service android:name=".service.MicService"/>
+        <activity android:name=".activities.BirthActivity"
+            android:theme="@style/LoginTheme"></activity>
 
 
         <meta-data android:name="com.amap.api.v2.apikey" android:value="8d62d849bef006a5a2d0879cfa7a4d8f">

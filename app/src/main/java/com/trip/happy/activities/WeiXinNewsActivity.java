@@ -39,8 +39,6 @@ public class WeiXinNewsActivity extends BaseActivity {
     WebView wvWeiXinNewsDisplay;
     @BindView(R.id.fab_wei_xin_news_browser)
     FloatingActionButton fabWeiXinNewsBrowser;
-    @BindView(R.id.fab_wei_xin_news_share)
-    FloatingActionButton fabWeiXinNewsShare;
     @BindView(R.id.go_out)
     TextView goOut;
     private String url;
@@ -143,14 +141,13 @@ public class WeiXinNewsActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.fab_wei_xin_news_browser, R.id.fab_wei_xin_news_share})
+    @OnClick({R.id.fab_wei_xin_news_browser})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.fab_wei_xin_news_browser:
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
                 break;
-            case R.id.fab_wei_xin_news_share:
-                break;
+
         }
     }
 
